@@ -17,7 +17,9 @@ jobs:
 
       - name: Start Selenoid
         uses: Xotabu4/selenoid-github-action@v2
-
+        with:
+          browser: chrome
+          version: "latest"
 
       - name: Make Gradle executable
         run: chmod +x ./gradlew
@@ -25,14 +27,16 @@ jobs:
       - name: Run tests with Selenide
         run: ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub
 
-      - uses: actions/checkout@v2
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
 
-      - uses: simple-elf/allure-report-action@master
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
         if: always()
         with:
           allure_results: build/allure-results
@@ -40,9 +44,16 @@ jobs:
           allure_report: allure-report
           allure_history: allure-history
 
-      - uses: peaceiris/actions-gh-pages@v3
+      - name: Prepare gh-pages directory
         if: always()
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: gh-pages
+        run: |
+          rm -rf gh-pages/*
+          cp -r allure-history/* gh-pages/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./gh-pages
+          publish_branch: gh-pages
