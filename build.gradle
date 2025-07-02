@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id('io.qameta.allure') version '2.12.0'
+
+}
+
+group = 'alex.qa'
+version = '1.0-SNAPSHOT'
+
+allure { //за появление папчки алюр резулт build allure results
+    report {
+        version.set("2.21.0")
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.21.0")
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation (
+            "com.codeborne:selenide:7.9.1",
+            "org.junit.jupiter:junit-jupiter:5.9.3",
+            "org.junit.jupiter:junit-jupiter-api:5.9.3",
+            "org.junit.jupiter:junit-jupiter-params:5.9.3",
+            "com.github.javafaker:javafaker:1.0.2",
+            'org.slf4j:slf4j-simple:2.0.17',
+            'commons-io:commons-io:2.19.0',
+            'com.codeborne:pdf-test:1.9.2',
+            'com.codeborne:xls-test:1.7.2',
+            'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.19.1',
+            'org.docx4j:docx4j:3.3.5',
+            'org.apache.pdfbox:pdfbox:3.0.5',
+            'com.opencsv:opencsv:5.9',
+            'com.google.code.gson:gson:2.13.1',
+            'org.codehaus.jackson:jackson-core-asl:1.9.13',
+            'com.fasterxml.jackson.core:jackson-databind:2.16.0',
+            'io.qameta.allure:allure-selenide:2.29.1' // for logging
+
+    )// для логирования)
+}
+
+
+
+test {
+    useJUnitPlatform()
+}
