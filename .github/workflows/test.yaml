@@ -17,9 +17,7 @@ jobs:
 
       - name: Start Selenoid
         uses: Xotabu4/selenoid-github-action@v2
-        with:
-          browser: chrome
-          version: "116.0"
+
 
       - name: Make Gradle executable
         run: chmod +x ./gradlew
