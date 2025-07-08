@@ -61,7 +61,7 @@ public class stepsTests {
 //        $("[href='/selenide/selenide/wiki/How-Selenide-creates-WebDriver']").click();
 //        $("#user-content-3-using-junit5-extend-test-class").$(byText("3. Using JUnit5 extend test class23"));
 //        sleep(4000);
-//        $("#wiki-tab").$(byText("Wikiee")).click();
+//        $("#wiki-tab").$(byText("Wikieeg")).click();
 //
 //
 //    }
