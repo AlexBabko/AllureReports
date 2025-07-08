@@ -8,6 +8,9 @@ group = 'alex.qa'
 version = '1.0-SNAPSHOT'
 
 allure {
+    report {
+        version.set('2.21.0')
+    }
     adapter {
         aspectjWeaver.set(true)
         frameworks {
