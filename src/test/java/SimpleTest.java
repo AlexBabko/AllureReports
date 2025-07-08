@@ -1,7 +1,9 @@
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.commands.As;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -10,6 +12,12 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class SimpleTest {
+    @BeforeAll
+    static void setup() {
+        Configuration.browser = "chrome"; // или "firefox"
+        Configuration.headless = true;
+        Configuration.webdriverLogsEnabled = true; // авто-установка драйверов
+    }
 
     @Test
     public void testIssueSearch() {

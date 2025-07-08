@@ -1,5 +1,7 @@
+import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -8,6 +10,12 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class webTests {
+    @BeforeAll
+    static void setup() {
+        Configuration.browser = "chrome"; // или "firefox"
+        Configuration.headless = true;
+        Configuration.webdriverLogsEnabled = true; // авто-установка драйверов
+    }
 
     @Step
     public void openMainPage() {
