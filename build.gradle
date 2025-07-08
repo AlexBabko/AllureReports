@@ -53,4 +53,5 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
+    systemProperty "allure.results.directory", "/allure-results"
 }
