@@ -8,7 +8,7 @@ public class LabelTest {
 
     @Test
     @DisplayName("Display  Name static name")
-    @Story("123")
+    @Story("1234")
     @Owner("AlexB")
     void testStaticLabels(){
 
