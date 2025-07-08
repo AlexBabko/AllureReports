@@ -55,7 +55,7 @@ public class stepsTests {
 //    @Test
 //    void testlambdaStep2 (){
 //        SelenideLogger.addListener("allure",new AllureSelenide());
-//        open("https://github.com/selenide/selenide");
+//        open("httpsdsds://github.com/selenide/selenide");
 //        $("#wiki-tab").$(byText("Wiki")).click();
 //        $("[href='/selenide/selenide/wiki/How-Selenide-creates-WebDriver']").shouldBe(visible);
 //        $("[href='/selenide/selenide/wiki/How-Selenide-creates-WebDriver']").click();
