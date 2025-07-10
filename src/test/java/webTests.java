@@ -16,7 +16,7 @@ public class webTests {
         Configuration.headless = true;
         Configuration.webdriverLogsEnabled = true; // авто-установка драйверов
     }
-
+    @Test
     @Step
     public void openMainPage() {
         open("https://github.com/selenide/selenide");
