@@ -20,6 +20,7 @@ public class stepsTests {
         Configuration.headless = true;
         Configuration.webdriverLogsEnabled = true; // авто-установка драйверов
         Configuration.remote= "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        SelenideLogger.addListener("allure",new AllureSelenide());
     }
     
     @Test
