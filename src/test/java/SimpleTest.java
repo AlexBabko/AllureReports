@@ -1,11 +1,9 @@
+import Helpers.Attach;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.commands.As;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -22,6 +20,10 @@ public class SimpleTest {
 
 
         Configuration.remote= "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+    }
+    @AfterEach
+    void addAttachments(){
+        Attach.screenshotAs("Last screenshot")
     }
 
     @Test
