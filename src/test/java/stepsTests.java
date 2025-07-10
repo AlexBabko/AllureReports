@@ -53,7 +53,7 @@ public class stepsTests {
 
     }
          @Test
-         @Tag("third")
+         @Tag("second")
         public void testAnnotatedExample() {
             webTests steps = new webTests();
             steps.openMainPage();
