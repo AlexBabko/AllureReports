@@ -48,9 +48,11 @@ public class stepsTests {
         step("3. Using JUnit5 extend test class23\"", () -> {
             $("#user-content-3-using-junit5-extend-test-class").$(byText("3. Using JUnit5 extend test class23"));
         });
+        sleep(6000);
 
     }
          @Test
+         @Tag("third")
         public void testAnnotatedExample() {
             webTests steps = new webTests();
             steps.openMainPage();

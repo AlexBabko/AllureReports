@@ -19,10 +19,13 @@ public class SimpleTest {
         Configuration.browser = "chrome"; // или "firefox"
         Configuration.headless = true;
         Configuration.webdriverLogsEnabled = true; // авто-установка драйверов
+
+
+        Configuration.remote= "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @Test
-    @Tag('second')
+    @Tag("second")
     public void testIssueSearch() {
         SelenideLogger.addListener("allure",new AllureSelenide());
 
