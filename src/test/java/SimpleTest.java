@@ -4,11 +4,19 @@ import com.codeborne.selenide.commands.As;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.Map;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
+//import static jdk.internal.foreign.abi.aarch64.AArch64Architecture.Regs.v1;
+//import static jdk.internal.module.ModulePath.of;
+//import static jdk.vm.ci.aarch64.AArch64.v2;
+//import static jdk.vm.ci.amd64.AMD64.k1;
+//import static jdk.vm.ci.amd64.AMD64.k2;
 
 
 public class SimpleTest {
@@ -18,6 +26,13 @@ public class SimpleTest {
         Configuration.headless = true;
         Configuration.webdriverLogsEnabled = true; // авто-установка драйверов
 
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
 
         Configuration.remote= "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
