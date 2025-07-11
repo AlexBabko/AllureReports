@@ -23,11 +23,14 @@ public class Attach {
     }
 
 
-    @Attachment(value = "Video",type = "text/html", fileExtension = ".html")
+    @Attachment(value = "Видео теста", type = "text/html", fileExtension = ".html")
     public static String addVideo() {
-        return "<html><body><video widht='100%' height='100' controls autoplay><source scr='>"
-                + getVideoUrl()
-                +"'type='video/mp4'></video></body></html>";
+        return "<html><body>" +
+                "<video width='100%' height='300' controls autoplay>" +
+                "<source src='" + getVideoUrl() + "' type='video/mp4'>" +
+                "Браузер не поддерживает видео-тег." +
+                "</video>" +
+                "</body></html>";
     }
 
     public static URL getVideoUrl() {
