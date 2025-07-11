@@ -39,6 +39,7 @@ public class SimpleTest {
     @AfterEach
     void addAttachments(){
         Attach.screenshotAs("Last screenshot");
+
     }
 
     @Test
