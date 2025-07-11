@@ -23,6 +23,13 @@ public class Attach {
     }
 
 
+    @Attachment(value = "Video",type = "text/html", fileExtension = ".html")
+    public static String addVideo() {
+        return "<html><body><video widht='100%' height='100' controls autoplay><source scr='>"
+                + getVideoUrl()
+                +"'type='video/mp4'></video></body></html>";
+    }
+
     public static URL getVideoUrl() {
         WebDriver driver = WebDriverRunner.getWebDriver();
         String sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
