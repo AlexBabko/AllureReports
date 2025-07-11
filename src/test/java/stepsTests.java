@@ -1,10 +1,15 @@
+import Helpers.Attach;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.Map;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -17,12 +22,27 @@ public class stepsTests {
     @BeforeAll
     static void setup() {
         Configuration.browser = "chrome"; // или "firefox"
-        Configuration.headless = true;
+        Configuration.headless = false;
         Configuration.webdriverLogsEnabled = true; // авто-установка драйверов
+
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
+
         Configuration.remote= "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        SelenideLogger.addListener("allure",new AllureSelenide());
     }
-    
+    @AfterEach
+    void addAttachments(){
+        Attach.screenshotAs("Last screenshot");
+        Attach.addVideo();
+
+    }
+
+
     @Test
     @Tag("second")
     void testlambdaStep1 () {
